@@ -1,0 +1,31 @@
+name: mywork ci/cd workflows
+on:
+  push:
+    branches:
+      - build_#21
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: (1) Set up Docker
+        uses: docker/setup-docker-action@v4
+      - name: (2) Checkout sources
+        uses: actions/checkout@v4
+      - name: (3) Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: (4) Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: (5) Build with Gradle
+        run: ./gradlew build
+      - name: (6) Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+      - name: (7) Send build file to S3 Bucket
+        run: |
+          aws s3 cp ./build/libs/mywork-be-0.0.1-SNAPSHOT.jar s3://mywork-backend-build/
