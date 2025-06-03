@@ -20,7 +20,7 @@ jobs:
       - name: (4) Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: (5) Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew clean test
       - name: (6) 테스트 결과를 PR 코멘트로 출력
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
