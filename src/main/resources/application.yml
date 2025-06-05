@@ -24,6 +24,9 @@ member:
 post:
   page:
     size: 10
+project:
+  page:
+    size: 10
 jwt:
   access-token:
     private-key: 126cab8a5d9087a27be4e2a0599682e2bab38e80201d1befa2dd9d55ecbdeac58bab0c84301ad9f9f8a71836825e5a7214e7a9fb17a8578418de6cfe9a15cbc7
