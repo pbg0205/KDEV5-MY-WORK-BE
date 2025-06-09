@@ -447,6 +447,8 @@ public class CompanyDocumentationTest extends RestDocsDocumentation {
 				.requestHeaders(
 					headerWithName(HttpHeaders.CONTENT_TYPE).description("컨텐츠 타입"),
 					headerWithName(HttpHeaders.AUTHORIZATION).description("엑세스 토큰"))
+				.queryParameters(
+					parameterWithName("companyType").description("회사 타입(DEV/CLIENT)"))
 				.responseFields(
 					fieldWithPath("result").type(JsonFieldType.STRING).description("응답 결과"),
 					fieldWithPath("data.companies[].companyId").type(JsonFieldType.STRING).description("회사 아이디"),
@@ -487,6 +489,8 @@ public class CompanyDocumentationTest extends RestDocsDocumentation {
 				.tag("Company API")
 				.summary("회사의 직원 목록 조회 API")
 				.description("회사의 직원 목록을 조회한다.")
+				.queryParameters(
+					parameterWithName("page").description("페이지 번호"))
 				.requestHeaders(
 					headerWithName(HttpHeaders.CONTENT_TYPE).description("컨텐츠 타입"),
 					headerWithName(HttpHeaders.AUTHORIZATION).description("엑세스 토큰"))
@@ -532,6 +536,8 @@ public class CompanyDocumentationTest extends RestDocsDocumentation {
 				.description("회사의 직원 목록을 조회한다.")
 				.requestHeaders(
 					headerWithName(HttpHeaders.CONTENT_TYPE).description("컨텐츠 타입"))
+				.queryParameters(
+					parameterWithName("page").description("페이지 번호"))
 				.responseFields(
 					fieldWithPath("result").type(JsonFieldType.STRING).description("응답 결과"),
 					fieldWithPath("data").type(JsonFieldType.NULL).description("응답 데이터"),

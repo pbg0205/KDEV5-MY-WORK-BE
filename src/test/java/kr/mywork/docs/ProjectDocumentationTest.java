@@ -2,6 +2,7 @@ package kr.mywork.docs;
 
 import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document;
 import static com.epages.restdocs.apispec.ResourceDocumentation.headerWithName;
+import static com.epages.restdocs.apispec.ResourceDocumentation.parameterWithName;
 import static com.epages.restdocs.apispec.ResourceDocumentation.resource;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -61,6 +62,9 @@ public class ProjectDocumentationTest extends RestDocsDocumentation {
 				.requestHeaders(
 					headerWithName(HttpHeaders.CONTENT_TYPE).description("컨텐츠 타입"),
 					headerWithName(HttpHeaders.AUTHORIZATION).description("엑세스 토큰"))
+				.queryParameters(
+					parameterWithName("projectId").description("프로젝트 아이디"),
+					parameterWithName("companyId").description("회사 아이디"))
 				.responseFields(
 					fieldWithPath("result").type(JsonFieldType.STRING).description("응답 결과"),
 					fieldWithPath("data.members[].memberId").type(JsonFieldType.STRING)
