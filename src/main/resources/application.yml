@@ -28,6 +28,11 @@ spring:
   output:
     ansi:
       enabled: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "metrics,health,prometheus"  # 혹은 "*"로 모든 엔드포인트 오픈 가능
 company:
   page:
     size: 10
